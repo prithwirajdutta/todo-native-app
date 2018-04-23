@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet,TouchableOpacity,ScrollView,TextInput,Button } from 'react-native';
+import { Text, View, StyleSheet,TouchableOpacity,ScrollView,TextInput } from 'react-native';
 
 export default class App extends Component {
   state={
@@ -19,12 +19,19 @@ export default class App extends Component {
       ctodo:''
     });
   } 
+  deletetodo = (i) => {
+    let d = this.state.todos.slice();
+    d.splice(i,1);
+    this.setState({
+        todos:d
+    });
+  }
   render() {
     let b = this.state.todos.map((e,i) => {
       return(
-      <View  key={i}>
+      <View  key={i} style={styles.box}>
       <Text style={styles.scrolltext}>{e}</Text>
-      <Button onClick>x</Button>
+      <TouchableOpacity style={styles.del} onPress={() => this.deletetodo(i)}><Text style={styles.delbtn}>x</Text></TouchableOpacity>
       </View>
       );
     });
@@ -91,5 +98,18 @@ const styles = StyleSheet.create({
   btntxt:{
     color:'white',
     fontSize:30
+  },
+  del:{
+    backgroundColor:'#03A9F4',
+  },
+  box:{
+    flex:1,
+    flexDirection:'row'
+  },
+  delbtn:{
+   
+    padding:5,
+    paddingHorizontal:20,
+    color:'white'
   }
 });
