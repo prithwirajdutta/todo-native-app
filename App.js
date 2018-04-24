@@ -43,7 +43,6 @@ export default class App extends Component {
         <ScrollView style={styles.scroll}>
          {b}
         </ScrollView>
-        <View><Text>{this.state.todos.length===0 ? 'no todos yet' : 'you have todos'}</Text></View>
         <TextInput value={this.state.ctodo} style={styles.entry} placeholder='>Enter Notes' onChangeText={(ctodo)=>this.setState({ctodo})}></TextInput>
         <TouchableOpacity style={styles.btn} onPress={this.onPress}>
           <Text style={styles.btntxt}>+</Text>
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#E91E63',
     height:80,
     alignItems:'center',
-    justifyContent:'center'
+    justifyContent:'center',
   },
   headertitle:{
     color:'white',
@@ -70,14 +69,10 @@ const styles = StyleSheet.create({
   },
   scroll:{
     flex:1,
-    
+    padding:10
   },
 
-  scrolltext:{
-    width:100,
-    fontSize:30,
-    
-  },
+ 
   entry:{
     backgroundColor:'#212121',
     height:60,
@@ -99,17 +94,33 @@ const styles = StyleSheet.create({
     color:'white',
     fontSize:30
   },
-  del:{
-    backgroundColor:'#03A9F4',
-  },
-  box:{
-    flex:1,
-    flexDirection:'row'
-  },
-  delbtn:{
-   
-    padding:5,
-    paddingHorizontal:20,
-    color:'white'
-  }
+  box: {
+        position: 'relative',
+        padding: 20,
+        paddingRight: 100,
+        borderBottomWidth:2,
+        borderBottomColor: '#ededed'
+    },
+    scrolltext: {
+        paddingLeft: 20,
+        borderLeftWidth: 10,
+        borderLeftColor: '#E91E63', 
+
+
+    },
+    del: {
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#2980b9',
+        padding: 10,
+        top: 10,
+        bottom: 10,
+        right: 10,
+        borderRadius:10
+    },
+    delbtn: {
+        color: 'white'
+    }
+  
 });
